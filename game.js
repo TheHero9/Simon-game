@@ -5,9 +5,10 @@ var level=0;
 var started=false;
 
 // Keypress
-$(document).keydown(function(event){
+$("#start").click(function(event){
   if(!started){
     $("#level-title").text("Level "+level);
+    $("#start").text("");
     nextSequence();
     started=true;
   }
@@ -78,7 +79,7 @@ function checkAnswer(currentLevel){
     var audio = new Audio("sounds/wrong.mp3");
     audio.play();
     $("body").addClass("game-over");
-    $('h1').text("Game Over! Press any key to restart.")
+    $('h1').text("Game Over!Your level:"+level);
     setTimeout(function(){
       $("body").removeClass("game-over");
     },2000)
@@ -88,6 +89,7 @@ function checkAnswer(currentLevel){
 
 function startOver(){
   started=false;
-  levels=0;
+  level=0;
   gamePattern=[];
+  $("#start").text("RESTART");
 }
