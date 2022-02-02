@@ -2,6 +2,7 @@ var buttonColours=["red", "blue", "green", "yellow"];
 var gamePattern=[];
 var userClickedPattern=[];
 var level=0;
+var highestLevel=0;
 var started=false;
 
 // Keypress
@@ -37,7 +38,7 @@ function nextSequence(){
   var randomChosenColour= buttonColours[randomNumber];
 
  gamePattern.push(randomChosenColour);
- $("#"+randomChosenColour).fadeOut(50).fadeIn(50);
+ $("#"+randomChosenColour).fadeOut(500).fadeIn(500);
 
  playSound(randomChosenColour);
 
@@ -79,10 +80,13 @@ function checkAnswer(currentLevel){
     var audio = new Audio("sounds/wrong.mp3");
     audio.play();
     $("body").addClass("game-over");
-    $('h1').text("Game Over!Your level:"+level);
+    $('h1').text("Game Over!");
     setTimeout(function(){
       $("body").removeClass("game-over");
     },2000)
+
+    highestScore();
+    lastScore();
     startOver();
   }
 }
@@ -92,4 +96,15 @@ function startOver(){
   level=0;
   gamePattern=[];
   $("#start").text("RESTART");
+}
+
+function highestScore(){
+  if (level>highestLevel){
+    highestLevel=level;
+    $("#highest-score").text("Highest score: "+highestLevel);
+  }
+}
+
+function lastScore(){
+  $("#last-score").text("Last score: "+level);
 }

@@ -56,6 +56,12 @@ body {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin:  5%;
-  color: #FEF2BF;
+  color: #F76E11;
+}
 
+#highest-score, #last-score{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  margin:  2%;
+  color: #FF9F45;
 }
